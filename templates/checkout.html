@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+</head>
+
+<body>
+    <h1 class="title">💳 Checkout</h1>
+
+    <div class="checkout-container">
+
+        ```
+        <form>
+
+            <input type="text" placeholder="Full Name" required>
+
+            <input type="email" placeholder="Email Address" required>
+
+            <input type="tel" placeholder="Phone Number" required>
+
+            <textarea placeholder="Delivery Address" rows="4" required>
+    </textarea>
+
+            <select required>
+                <option value="">Select Payment Method</option>
+                <option>Cash on Delivery</option>
+                <option>UPI</option>
+                <option>Credit Card</option>
+                <option>Debit Card</option>
+            </select>
+
+            <button type="submit">
+                Place Order
+            </button>
+
+        </form>
+        ```
+
+    </div>
+
+</html>

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/restaurant_register.css' %}">
+
+</head>
+
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <h2>🍔 CraveCart</h2>
+            <h3>Register Your Restaurant</h3>
+            <form method="POST"> 
+                {% csrf_token %}
+                 <input type="text" placeholder="Restaurant Name" required>
+                  <input
+                    type="text" placeholder="Owner Name" required> 
+                    <input type="email" placeholder="Email Address"
+                    required> 
+                    <input type="tel" placeholder="Phone Number" required> 
+                    <input type="text"
+                    placeholder="Restaurant Address" required> 
+                    <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required> 
+                <button type="submit"> Register Restaurant </button> 
+                </form>
+        </div>
+    </div>
+</body>
+
+</html>

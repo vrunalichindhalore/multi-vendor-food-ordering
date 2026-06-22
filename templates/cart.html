@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+</head>
+
+<body>
+    <h1 class="title">🛒 Your Cart</h1>
+    <div class="cart-container">
+        <div class="cart-item">
+            <h3>Cheese Burger</h3>
+            <p>Price: ₹199</p>
+            <p>Quantity: 1</p>
+        </div>
+        <div class="cart-item">
+            <h3>Veg Pizza</h3>
+            <p>Price: ₹299</p>
+            <p>Quantity: 1</p>
+        </div>
+        <div class="total-box">
+            <h2>Total: ₹498</h2> 
+            <button>Proceed to Checkout</button>
+        </div>
+    </div>
+</body>
+
+</html>
