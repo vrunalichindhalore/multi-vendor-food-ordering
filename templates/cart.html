@@ -1,32 +1,63 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 </head>
-
 <body>
-    <h1 class="title">🛒 Your Cart</h1>
-    <div class="cart-container">
-        <div class="cart-item">
-            <h3>Cheese Burger</h3>
-            <p>Price: ₹199</p>
-            <p>Quantity: 1</p>
-        </div>
-        <div class="cart-item">
-            <h3>Veg Pizza</h3>
-            <p>Price: ₹299</p>
-            <p>Quantity: 1</p>
-        </div>
-        <div class="total-box">
-            <h2>Total: ₹498</h2> 
-            <button>Proceed to Checkout</button>
-        </div>
-    </div>
-</body>
 
+<h1 class="title">🛒 Your Cart</h1>
+
+<div class="cart-container">
+
+    {% for item in cart_items %}
+
+    <div class="cart-card">
+         
+
+        {% if item.food_item.image %}
+            <img src="{{ item.food_item.image.url }}" alt="{{ item.food_item.name }}">
+        {% endif %}
+
+        <div class="cart-details">
+            <h3>{{ item.food_item.name }}</h3>
+            <p>Price: ₹{{ item.food_item.price }}</p>
+           <div class="quantity-box">
+
+    <a href="{% url 'decrease_quantity' item.id %}">
+        <button class="qty-btn">-</button>
+    </a>
+
+    
+    <span>{{ item.quantity }}</span>
+
+    <a href="{% url 'increase_quantity' item.id %}">
+
+        <button class="qty-btn">+</button>
+    </a>
+
+</div>
+            <a href="{% url 'remove_from_cart' item.id %}">
+    <button class="remove-btn">Remove</button>
+</a>
+        </div>
+
+    </div>
+    
+
+    {% endfor %}
+
+</div>
+
+<div class="total-box">
+    <h2>Total: ₹{{ total }}</h2>
+
+   <a href="{% url 'checkout' %}">
+    <button class="checkout-btn">
+        Proceed to Checkout
+    </button>
+</a>
+</div>
+</body>
 </html>

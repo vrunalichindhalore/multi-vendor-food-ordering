@@ -5,30 +5,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant_Listing</title>
-    <link rel="stylesheet" href="{%static 'css/restaurants.css'  %}">
+    <title>Restaurant Listing</title>
+    <link rel="stylesheet" href="{% static 'css/restaurants.css' %}">
 </head>
 
 <body>
-    <h1 class="title">🍔 Available Restaurants</h1>
-    <div class="restaurant-container">
-        <div class="restaurant-card"> <img src="{% static 'images/restaurant1.jpg' %}" alt="Restaurant">
-            <h3>Spice Garden</h3>
-            <p>Indian Cuisine</p> <button>View Menu</button>
-        </div>
-        <div class="restaurant-card"> <img src="{% static 'images/restaurant2.jpg' %}" alt="Restaurant">
-            <h3>Pizza Hub</h3>
-            <p>Italian Cuisine</p> <button>View Menu</button>
-        </div>
-        <div class="restaurant-card"> <img src="{% static 'images/restaurant3.jpg' %}" alt="Restaurant">
-            <h3>Burger Point</h3>
-            <p>Fast Food</p> <button>View Menu</button>
-        </div>
-        <div class="restaurant-card"> <img src="{% static 'images/restaurant4.jpg' %}" alt="Restaurant">
-            <h3>Biryani House</h3>
-            <p>Hyderabadi Special</p> <button>View Menu</button>
-        </div>
-    </div>
-</body>
 
+    <h1 class="title">🍔 Available Restaurants</h1>
+
+    <div class="restaurant-container">
+
+        {% for restaurant in restaurants %}
+
+        <div class="restaurant-card">
+
+            {% if restaurant.image %}
+                <img src="{{ restaurant.image.url }}" alt="{{ restaurant.name }}">
+            {% endif %}
+
+            <h3>{{ restaurant.name }}</h3>
+
+            <p>{{ restaurant.address }}</p>
+
+            <p>{{ restaurant.phone }}</p>
+
+            <a href="/menu/{{ restaurant.id }}/">
+                <button>View Menu</button>
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
 </html>

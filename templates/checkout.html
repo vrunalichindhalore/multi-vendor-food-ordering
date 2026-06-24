@@ -14,32 +14,32 @@
 
     <div class="checkout-container">
 
-        ```
-        <form>
+        <h4>Customer Details</h4>
+        <form method="POST">
+            {% csrf_token %}
 
-            <input type="text" placeholder="Full Name" required>
+            <input type="text" name="customer_name" placeholder="Full Name" required>
 
-            <input type="email" placeholder="Email Address" required>
+<input type="email" name="email" placeholder="Email Address" required>
 
-            <input type="tel" placeholder="Phone Number" required>
+<input type="tel" name="phone" placeholder="Phone Number" required>
 
-            <textarea placeholder="Delivery Address" rows="4" required>
-    </textarea>
+<textarea name="address" placeholder="Delivery Address" rows="4" required></textarea>
 
-            <select required>
-                <option value="">Select Payment Method</option>
-                <option>Cash on Delivery</option>
-                <option>UPI</option>
-                <option>Credit Card</option>
-                <option>Debit Card</option>
-            </select>
+<select name="payment_method" required>
+    <option value="">Select Payment Method</option>
+    <option>Cash on Delivery</option>
+    <option>UPI</option>
+    <option>Credit Card</option>
+    <option>Debit Card</option>
+ </select>
 
             <button type="submit">
                 Place Order
             </button>
 
         </form>
-        ```
+        
 
     </div>
 
