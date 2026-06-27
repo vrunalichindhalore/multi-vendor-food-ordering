@@ -1,80 +1,58 @@
-# 🍔 Online Food Ordering System
 
-A web-based food ordering application developed using Django. The system allows users to browse restaurants, search food items, add products to cart, place orders, and view order history.
+# Multi Vendor Food Ordering System 🍔🍕
 
-## 🚀 Features
+A Django-based Multi Vendor Food Ordering System where users can browse restaurants, view menus, add food items to cart, place orders, and track order history.
 
-* User Registration and Login
+## Features
+
+* User Registration
+* User Login & Logout
+* Authentication with Django
 * Restaurant Listing
-* Food Menu Display
-* Food Search Functionality
+* Restaurant Menu Page
 * Add to Cart
-* Remove from Cart
-* Update Quantity
-* Cart Total Calculation
+* Cart Management
 * Checkout System
-* Order Placement
-* Order Success Page
 * Order History
-* Responsive User Interface
+* Food Search Functionality
+* Admin Panel Management
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 * Python
 * Django
-* HTML5
-* CSS3
 * SQLite
+* HTML
+* CSS
+* JavaScript
 * Git & GitHub
 
-## 📂 Project Modules
+## Project Structure
 
-### Customer Module
+* User Authentication
+* Restaurant Management
+* Food Item Management
+* Cart Management
+* Order Management
 
-* Browse Restaurants
-* Search Food Items
-* Manage Cart
-* Place Orders
-* View Order History
+## Installation
 
-### Restaurant Module
+```bash
+git clone https://github.com/vrunalichindhalore/multi-vendor-food-ordering.git
+cd multi-vendor-food-ordering
 
-* Restaurant Registration
-* Menu Management
+python -m venv env
+env\Scripts\activate
 
-## 📸 Screens Included
+pip install -r requirements.txt
 
-* Home Page
-* Restaurant List
-* Menu Page
-* Cart Page
-* Checkout Page
-* Order Success Page
-* Order History Page
+python manage.py migrate
 
-## 🎯 Learning Outcomes
+python manage.py runserver
+```
 
-* Django Models and ORM
-* URL Routing
-* Template Rendering
-* CRUD Operations
-* Form Handling
-* Authentication Concepts
-* GitHub Version Control
+## Author
 
-## 🔮 Future Enhancements
-
-* Django REST Framework (DRF)
-* JWT Authentication
-* Online Payment Integration
-* User Profile Management
-* Order Tracking System
-* Deployment on Cloud
-
-## 👩‍💻 Developer
-
-Vrunali Chindhalore
+**Vrunali Chindhalore**
 
 Computer Science Engineering Student
-
-Interested in Backend Development, Django, Python, and Web Development.
