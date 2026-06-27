@@ -12,6 +12,10 @@ urlpatterns = [
     path('increase-quantity/<int:cart_id>/', views.increase_quantity, name='increase_quantity'),
     path('decrease-quantity/<int:cart_id>/', views.decrease_quantity, name='decrease_quantity'),
     path('orders/', views.order_history, name='order_history'),
+    path('search/', views.search_food, name='search_food'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
     
 
     

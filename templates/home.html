@@ -14,24 +14,40 @@
 
     <nav>
         <h1>🍔 CraveCart</h1>
-
         <ul>
+
     <li><a href="{% url 'home' %}">Home</a></li>
 
-    <li><a href="{% url 'restaurant_list' %}">Menu</a></li>
+    <li>
+    <a href="{% url 'restaurant_list' %}">Menu</a>
+</li>
 
-    <li><a href="{% url 'login' %}">Login</a></li>
+    {% if user.is_authenticated %}
+       <li class="welcome-user">
+    <span>Hello, {{ user.username }}</span>
+</li>
+        <li><a href="{% url 'cart' %}">Cart</a></li>
 
-    <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="{% url 'order_history' %}">My Orders</a></li>
 
-    <li><a href="{% url 'restaurant' %}">Register Restaurant</a></li>
-    
-    <li><a href="{% url 'cart' %}">Cart</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
 
-    <li><a href="{% url 'order_history' %}">My Orders</a></li>
+    {% else %}
+
+        <li><a href="{% url 'login' %}">Login</a></li>
+
+        <li><a href="{% url 'register' %}">Register</a></li>
+
+    {% endif %}
+
 </ul>
-    </nav>
 
+        
+    </nav>
+ <form method="GET" action="{% url 'restaurant_list' %}" class="search-form">
+    <input type="text" name="search" placeholder="Search Food Items...">
+    <button type="submit">🔍 Search</button>
+</form>
     <section class="hero">
         <h1>Delicious Food Delivered Fast</h1>
         <p>Order your favorite meals from top restaurants.</p>

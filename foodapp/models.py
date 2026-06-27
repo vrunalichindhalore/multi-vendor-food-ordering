@@ -30,21 +30,17 @@ class Cart(models.Model):
 
     def __str__(self):
         return self.food_item.name
-
-class Order(models.Model):
-    customer_name = models.CharField(max_length=100)
-    email = models.EmailField()
-    phone = models.CharField(max_length=15)
-    address = models.TextField()
-    payment_method = models.CharField(max_length=50)
-    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.customer_name        
     
+from django.contrib.auth.models import User
 
 class Order(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
+
     customer_name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=15)
@@ -54,4 +50,4 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.customer_name    
+        return self.customer_name

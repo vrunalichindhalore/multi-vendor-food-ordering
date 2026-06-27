@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static  'css/search_result.css'  %}">
+</head>
+<body>
+   <div class="search-container">
+
+{% for item in food_items %}
+
+<div class="food-card">
+
+    {% if item.image %}
+        <img src="{{ item.image.url }}" alt="{{ item.name }}">
+    {% endif %}
+
+    <div class="food-info">
+
+        <h3>{{ item.name }}</h3>
+
+        <p class="restaurant-name">
+            {{ item.restaurant.name }}
+        </p>
+
+        <p class="price">₹{{ item.price }}</p>
+
+        <a href="{% url 'add_to_cart' item.id %}" class="add-btn">
+            Add To Cart
+        </a>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+</body>
+</html>

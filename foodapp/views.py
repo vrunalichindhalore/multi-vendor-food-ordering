@@ -1,17 +1,19 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from foodapp.models import Restaurant, FoodItem,Cart
+from foodapp.models import Restaurant, FoodItem,Cart,Order
 from .import views
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def restaurant_list(request):
     restaurants = Restaurant.objects.all()
 
+    print("Restaurant Count =", restaurants.count())
+
     return render(request,'restaurant_Listing.html', {
-    'restaurants': restaurants
-})
-
-
-
+        'restaurants': restaurants
+    })
 
 def menu_page(request, restaurant_id):
     restaurant = Restaurant.objects.get(id=restaurant_id)
@@ -42,10 +44,7 @@ def add_to_cart(request, food_id):
     return redirect('cart')
 
 
-
-
-from .models import Cart
-
+@login_required(login_url='login')
 def cart_page(request):
     cart_items = Cart.objects.all()
 
@@ -59,12 +58,8 @@ def cart_page(request):
         'total': total
     })
 
-from .models import Order, Cart
-from django.shortcuts import render, redirect
 
-from django.shortcuts import render, redirect
-from .models import Cart, Order
-
+@login_required(login_url='login')
 def checkout(request):
 
     if request.method == "POST":
@@ -82,6 +77,7 @@ def checkout(request):
             total += item.food_item.price * item.quantity
 
         Order.objects.create(
+            user=request.user,
             customer_name=customer_name,
             email=email,
             phone=phone,
@@ -102,8 +98,6 @@ def ordersuccess(request):
     return render(request, 'order_success.html')
 
 
-from django.shortcuts import get_object_or_404, redirect
-from .models import Cart
 
 def remove_from_cart(request, cart_id):
     cart_item = get_object_or_404(Cart, id=cart_id)
@@ -132,11 +126,89 @@ def decrease_quantity(request, cart_id):
 
     return redirect('cart')
 
-
+@login_required(login_url='login')
 def order_history(request):
-    orders = Order.objects.all().order_by('-created_at')
+    orders = Order.objects.filter(
+    user=request.user
+).order_by('-created_at')
 
     return render(request, 'order_history.html', {
         'orders': orders
     })
-       
+
+
+def search_food(request):
+
+    search = request.GET.get('search')
+
+    food_items = FoodItem.objects.all()
+
+    if search:
+        food_items = FoodItem.objects.filter(
+            name__icontains=search
+        )
+
+    return render(request, 'search_result.html', {
+        'food_items': food_items,
+        'search': search
+    })    
+
+
+
+from django.contrib.auth.models import User
+
+
+def register(request):
+
+    if request.method == "POST":
+
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+
+        if password != confirm_password:
+            return render(
+                request,
+                'register.html',
+                {'error': 'Passwords do not match'}
+            )
+
+        User.objects.create_user(
+            username=username,
+            email=email,
+            password=password
+        )
+
+        return redirect('login')
+
+    return render(request, 'register.html')
+
+
+def login_view(request):
+
+    if request.method == "POST":
+
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+
+    return render(request, 'login.html')
+
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
+
+
+
