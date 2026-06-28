@@ -81,3 +81,87 @@ body{
         max-width: 350px;
     }
 }
+
+/* Review Form */
+.menu-card form {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.menu-card label {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.menu-card select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+
+.menu-card textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: none;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.menu-card form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #ff3c1f;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-card form button:hover {
+    opacity: 0.9;
+}
+
+/* Reviews Section */
+.review-section {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.review-section h4 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.review-card {
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.review-user {
+    font-weight: bold;
+}
+
+.review-rating {
+    color: #f39c12;
+}
+
+.review-comment {
+    margin-top: 5px;
+    color: #555;
+}
+.rating-summary{
+    font-weight:bold;
+    color:#f39c12;
+    margin:8px 0;
+}

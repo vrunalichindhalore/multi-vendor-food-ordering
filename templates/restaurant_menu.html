@@ -22,6 +22,14 @@
         {% endif %}
 
             <h3>{{ food.name }}</h3>
+           {% if food.review_count > 0 %}
+<p>
+    ⭐ {{ food.avg_rating }}/5
+    ({{ food.review_count }} Reviews)
+</p>
+{% else %}
+<p>No Reviews Yet</p>
+{% endif %}
 
             <p>{{ food.description }}</p>
 
@@ -30,7 +38,55 @@
             <a href="{% url 'add_to_cart' food.id %}">
            <button>Add to Cart</button>
 </a>
+<form method="POST" action="{% url 'add_review' food.id %}">
+    {% csrf_token %}
 
+    <label>Rating:</label>
+
+    <select name="rating">
+        <option value="1">1 ⭐</option>
+        <option value="2">2 ⭐⭐</option>
+        <option value="3">3 ⭐⭐⭐</option>
+        <option value="4">4 ⭐⭐⭐⭐</option>
+        <option value="5">5 ⭐⭐⭐⭐⭐</option>
+    </select>
+
+    <br><br>
+
+    <textarea
+        name="comment"
+        placeholder="Write your review..."
+        rows="3"
+        cols="25"
+    ></textarea>
+
+    <br><br>
+
+    <button type="submit">
+        Submit Review
+    </button>
+</form>
+
+<h4>Reviews</h4>
+
+{% for review in reviews %}
+    {% if review.food_item.id == food.id %}
+
+        <p>
+            <strong>{{ review.user.username }}</strong>
+            - {{ review.rating }} ⭐
+        </p>
+
+        <p>{{ review.comment }}</p>
+
+        <small>
+            {{ review.created_at|date:"d M Y, h:i A" }}
+        </small>
+
+        <hr>
+
+    {% endif %}
+{% endfor %}
         </div>
 
         {% empty %}
