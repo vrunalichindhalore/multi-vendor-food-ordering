@@ -42,7 +42,6 @@ A web-based Multi-Vendor Food Ordering System developed using Django. The applic
 * SQLite
 * HTML5
 * CSS3
-* Bootstrap (if used)
 * Git & GitHub
 
 ## 📂 Project Structure
