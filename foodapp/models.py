@@ -58,6 +58,7 @@ class Order(models.Model):
     phone = models.CharField(max_length=15)
     address = models.TextField()
     payment_method = models.CharField(max_length=50)
+    payment_id = models.CharField(max_length=200, blank=True, null=True)
 
     total_amount = models.DecimalField(
         max_digits=10,
