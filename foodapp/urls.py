@@ -1,5 +1,17 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
+from rest_framework.routers import DefaultRouter
+from .views import RestaurantViewSet,FoodItemViewset,CartViewset,OrderViewset,OrderItemViewset,ReviewViewset
+
+router = DefaultRouter()
+router.register('restaurants',RestaurantViewSet,basename='restaurant'),
+router.register('fooditems',FoodItemViewset, basename='fooditem'),
+router.register('carts',CartViewset, basename='cart'),
+router.register('orders',OrderViewset,basename='order'),
+router.register('orderitems',OrderItemViewset,basename='orderitem')
+router.register('reviews',ReviewViewset,basename='review')
+
+
 
 urlpatterns = [
     path('restaurants/', views.restaurant_list, name='restaurant_list'),
@@ -17,7 +29,7 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('review/<int:food_id>/',views.add_review,name='add_review'),
+    path('api/',include(router.urls)),
     
-
     
 ]

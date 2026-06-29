@@ -5,6 +5,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import RestaurantSerializer,FoodItemSerializer,CartSerializer,OrderSerializer,OrderItemSerializer,ReviewSerializer
+from rest_framework import generics
 
 # Create your views here.
 def restaurant_list(request):
@@ -304,3 +308,28 @@ def add_review(request, food_id):
         'menu',
         restaurant_id=food.restaurant.id
     )
+
+from rest_framework import viewsets
+class RestaurantViewSet(viewsets.ModelViewSet):
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantSerializer
+
+class FoodItemViewset(viewsets.ModelViewSet):
+    queryset = FoodItem.objects.all()
+    serializer_class =  FoodItemSerializer  
+
+class CartViewset(viewsets.ModelViewSet):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer   
+
+class OrderViewset(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer  
+
+class OrderItemViewset(viewsets.ModelViewSet):
+    queryset = OrderItem.objects.all()
+    serializer_class  = OrderItemSerializer   
+
+class ReviewViewset(viewsets.ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer   
