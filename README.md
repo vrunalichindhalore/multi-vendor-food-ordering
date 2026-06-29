@@ -1,140 +1,138 @@
+# Multi-Vendor Food Ordering System
 
-# 🍔 Multi-Vendor Food Ordering System
+## Project Overview
 
-A web-based Multi-Vendor Food Ordering System developed using Django. The application allows users to browse restaurants, view menus, add food items to the cart, place orders, and submit reviews and ratings for food items.
+A full-stack Food Ordering System built using Django and Django REST Framework. Users can browse restaurants, view food menus, add items to cart, place orders, make online payments using Razorpay, and submit reviews and ratings.
 
-## 🚀 Features
+## Features
 
 ### User Features
 
 * User Registration and Login
-* Browse Restaurants
-* View Restaurant Menus
+* Restaurant Listing
+* Food Menu Display
 * Search Food Items
-* Add Food Items to Cart
-* Increase/Decrease Quantity
+* Add to Cart
+* Update Cart Quantity
 * Remove Items from Cart
 * Checkout System
 * Order History
 * Reviews and Ratings
-* Average Rating Display
-* One User = One Review Validation
 
-### Restaurant Features
+### Payment Integration
 
-* Restaurant Listing
-* Food Item Management
-* Food Images
+* Razorpay Payment Gateway Integration
+* Secure Online Payments
+* Payment Tracking
 
-### Review System
+### REST API Features
 
-* Submit Ratings (1–5 Stars)
-* Write Reviews
-* View Reviews
-* Average Rating Calculation
-* Review Count Display
-* Review Date Display
+* Restaurant API
+* Food Item API
+* Cart API
+* Order API
+* Order Item API
+* Review API
 
-## 🛠️ Technologies Used
+## Technologies Used
+
+### Backend
 
 * Python
 * Django
+* Django REST Framework
+
+### Database
+
 * SQLite
-* HTML5
-* CSS3
-* Git & GitHub
 
-## 📂 Project Structure
+### Frontend
 
-```text
+* HTML
+* CSS
+* JavaScript
+
+### Payment Gateway
+
+* Razorpay
+
+### Version Control
+
+* Git
+* GitHub
+
+## Project Structure
+
 foodOnline/
-│
-├── foodapp/
-├── media/
-├── static/
-├── templates/
-├── db.sqlite3
-├── manage.py
-└── requirements.txt
-```
 
-## ⚙️ Installation
+├── foodapp/
+
+├── foodOnline_main/
+
+├── templates/
+
+├── static/
+
+├── media/
+
+├── manage.py
+
+├── requirements.txt
+
+└── build.sh
+
+## Installation
 
 1. Clone the repository
 
-```bash
-git clone https://github.com/vrunalichindhalore/multi-vendor-food-ordering.git
-```
+git clone <repository-url>
 
-2. Navigate to project directory
+2. Create virtual environment
 
-```bash
-cd multi-vendor-food-ordering
-```
-
-3. Create virtual environment
-
-```bash
 python -m venv env
-```
 
-4. Activate virtual environment
+3. Activate virtual environment
 
 Windows:
 
-```bash
 env\Scripts\activate
-```
 
-5. Install dependencies
+4. Install dependencies
 
-```bash
 pip install -r requirements.txt
-```
 
-6. Run migrations
+5. Run migrations
 
-```bash
-python manage.py makemigrations
 python manage.py migrate
-```
 
-7. Start development server
+6. Start server
 
-```bash
 python manage.py runserver
-```
 
-8. Open browser
+## API Endpoints
 
-```text
-http://127.0.0.1:8000/
-```
+* /api/restaurants/
+* /api/fooditems/
+* /api/carts/
+* /api/orders/
+* /api/orderitems/
+* /api/reviews/
 
-## 📸 Key Modules
+## Future Enhancements
 
-* Authentication System
-* Restaurant Listing
-* Food Menu Management
-* Cart Management
-* Checkout System
-* Order Management
-* Review & Rating System
-* Order History
-
-## 🎯 Future Enhancements
-
-* Razorpay Payment Gateway Integration
-* Django REST Framework (DRF) APIs
-* Wishlist Feature
-* Food Recommendations
-* Admin Dashboard Analytics
+* Vendor Dashboard
+* Order Tracking
 * Email Notifications
+* Advanced Search and Filters
+* Deployment with PostgreSQL
 
-## 👩‍💻 Developer
+## Author
 
-**Vrunali Chindhalore**
+Vrunali Chindhalore
 
-Computer Science Engineering Graduate
+B.Tech Computer Science Engineering
 
-GitHub: https://github.com/vrunalichindhalore
+Python Developer | Django Developer
+
+
+
