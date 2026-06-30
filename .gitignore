@@ -12,8 +12,7 @@ ENV/
 
 # Django
 
-db.sqlite3
-*.log
+
 
 # Migrations (optional)
 
