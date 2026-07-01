@@ -20,9 +20,15 @@
 
         <div class="restaurant-card">
 
-            {% if restaurant.image %}
-                <img src="{{ restaurant.image.url }}" alt="{{ restaurant.name }}">
-            {% endif %}
+            {% if restaurant.name == "Pizza Hub" %}
+    <img src="{% static 'images/restaurant1.jpg' %}" alt="Pizza Hub">
+{% elif restaurant.name == "Burger Point" %}
+    <img src="{% static 'images/restaurant2.jpg' %}" alt="Burger Point">
+{% elif restaurant.name == "Spice Garden" %}
+    <img src="{% static 'images/restaurant3.jpg' %}" alt="Spice Garden">
+{% elif restaurant.name == "Delicious Delight" %}
+    <img src="{% static 'images/restaurant4.jpg' %}" alt="Delicious Delight">
+{% endif %}
 
             <h3>{{ restaurant.name }}</h3>
 

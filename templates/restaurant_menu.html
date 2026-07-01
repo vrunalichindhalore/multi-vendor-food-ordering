@@ -17,9 +17,13 @@
         {% for food in foods %}
 
         <div class="menu-card">
-            {% if food.image %}
-    <img src="{{ food.image.url }}" alt="{{ food.name }}">
-        {% endif %}
+          {% if "Burger" in food.name %}
+    <img src="{% static 'images/burger.jpg' %}" alt="Burger">
+{% elif "Pizza" in food.name %}
+    <img src="{% static 'images/pizza.jpg' %}" alt="Pizza">
+{% elif "Biryani" in food.name %}
+    <img src="{% static 'images/biryani.jpg' %}" alt="Biryani">
+{% endif %}
 
             <h3>{{ food.name }}</h3>
            {% if food.review_count > 0 %}

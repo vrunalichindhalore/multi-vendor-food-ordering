@@ -16,9 +16,15 @@
     <div class="cart-card">
          
 
-        {% if item.food_item.image %}
-            <img src="{{ item.food_item.image.url }}" alt="{{ item.food_item.name }}">
-        {% endif %}
+        {% load static %}
+
+{% if "Burger" in item.food_item.name %}
+    <img src="{% static 'images/burger.jpg' %}" alt="Burger">
+{% elif "Pizza" in item.food_item.name %}
+    <img src="{% static 'images/pizza.jpg' %}" alt="Pizza">
+{% elif "Biryani" in item.food_item.name %}
+    <img src="{% static 'images/biryani.jpg' %}" alt="Biryani">
+{% endif %}
 
         <div class="cart-details">
             <h3>{{ item.food_item.name }}</h3>
